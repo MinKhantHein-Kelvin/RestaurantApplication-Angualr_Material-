@@ -1,15 +1,32 @@
 <div class="container">
-  <div class="row">
-    <mat-spinner *ngIf="showSpinner" class="mx-auto"></mat-spinner>
-    <div class="col-md-4 mb-4" *ngFor="let resData of allRestaurentData">
+  <mat-spinner *ngIf="showSpinner" class="mx-auto"></mat-spinner>
+
+  <form [formGroup]="frmGroup" class="form-inline">
+    <mat-form-field class="ml-auto">
+      <mat-label class="text-warning">Search Item.......</mat-label>
+      <input matInput placeholder="Search Name or Location" formControlName="obj">
+    </mat-form-field>
+  </form>
+
+
+
+  <div class="row" *ngIf="allRestaurentData | async as restaurantData">
+    <div class="col-md-4 mb-4" *ngFor="let resData of restaurantData">
 
       <mat-card class="res-card text-center p-4">
         <mat-card-header class="mb-3">
           <div mat-card-avatar class="res-header-image"></div>
-          <mat-card-title class="mt-2">{{resData.name}}</mat-card-title>
+          <mat-card-title class="mt-2"><ngb-highlight
+            [result]="resData.name"
+            [term]="frmGroup.controls['obj'].value"
+            ></ngb-highlight></mat-card-title>
+
         </mat-card-header>
         <mat-card-content>
-          <h4>Location : {{resData.address}} | Type : {{resData.types}}</h4>
+          <h4>Location : <ngb-highlight
+            [result]="resData.address"
+            [term]="frmGroup.controls['obj'].value"
+            ></ngb-highlight> | Type : {{resData.types}}</h4>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button [routerLink]="resData._id" class="mb-2 btn btn-secondary btn-block rounded-pill" style="color: wheat; background: dimgray;">Details</button>
@@ -17,20 +34,17 @@
       </mat-card>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-md-4" *ngFor="let resData of allRestaurentData">
-      <mat-card class="example-card mb-5 text-center">
-        <mat-card-content >
-          <h1> {{listing.title}}</h1>
-          <img src="{{listing.profile_url}}" alt="">
-          {{resData.name}}
-          <h4>Price : {{resData.email}} | Locality : {{resData.mobile}}</h4>
-        </mat-card-content>
-        <mat-card-actions>
-          <button [routerLink]="resData._id" class="mb-2 btn btn-block rounded-pill" style="background: chocolate;">View Details</button>
-        </mat-card-actions>
-      </mat-card>
-
+  <!-- <div class="row" *ngIf="listings$ | async as listings">
+    <div class="col-md-4 mb-4" *ngFor="let listing of listings">
+      <div class="card">
+      <div class="card-header text-center">
+        <h3>{{listing.name}}</h3>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title text-center">Price : {{listing.email}} | Locality : {{listing.address}}</h4>
+        <a routerLink="listing._id" class="btn btn btn-secondary btn-block rounded-pill mt-4" style="color: wheat;">View Details</a>
+      </div>
+    </div>
     </div>
   </div> -->
 </div>

@@ -1,8 +1,8 @@
 export class RestaurantData {
-  _id: number;
+  _id: string;
   name: string;
   email: string;
   mobile: string;
   address: string;
-  services: string;
+  types: string;
 }

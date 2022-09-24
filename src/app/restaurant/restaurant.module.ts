@@ -7,6 +7,7 @@ import { AllRestaurantComponent } from './all-restaurant/all-restaurant.componen
 import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    NgbModule,
     RestaurantRoutingModule,
     HttpClientModule,
     MaterialModule,

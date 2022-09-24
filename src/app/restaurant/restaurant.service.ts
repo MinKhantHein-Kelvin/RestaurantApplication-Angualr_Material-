@@ -17,9 +17,7 @@ export class RestaurantService {
   };
 
   getAllData():Observable<RestaurantData[]>{
-    return this.http.get<any>(`${this.baseUrl}/api/restaurant`).pipe(map((res:any)=>{
-      return res;
-    }))
+    return this.http.get<any>(`${this.baseUrl}/api/restaurant`);
   }
 
   getDetails(id : any){
