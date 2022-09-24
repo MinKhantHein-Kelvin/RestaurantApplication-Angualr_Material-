@@ -8,13 +8,17 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class AllRestaurantComponent implements OnInit {
   allRestaurentData: any;
+  showSpinner = true;
 
   constructor( private resService : RestaurantService) { }
 
   ngOnInit(): void {
     this.resService.getAllData().subscribe(data=>{
       this.allRestaurentData = data;
-      console.log(this.allRestaurentData);
+      if(data){
+        this.showSpinner = false
+      }
+      // console.log(this.allRestaurentData);
     })
   }
 

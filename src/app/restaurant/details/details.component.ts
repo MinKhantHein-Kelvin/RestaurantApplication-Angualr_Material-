@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  showSpinner = true;
   restaurant : any;
   id : any;
 
@@ -18,7 +19,10 @@ export class DetailsComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.resService.getDetails(this.id).subscribe(data=>{
       this.restaurant = data;
-      console.log(this.restaurant);
+      if(data){
+        this.showSpinner = false;
+      }
+      // console.log(this.restaurant);
 
     })
   }
