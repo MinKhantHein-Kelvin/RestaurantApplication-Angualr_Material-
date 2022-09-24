@@ -1,1 +1,78 @@
-<p>add-restaurant works!</p>
+<div class="container">
+  <mat-card class="example-card" style="margin: 40px auto;">
+    <mat-card-header>
+      <mat-card-title><h1 class="font-weight-bold">Add Restaurant</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="restaurantForm" (ngSubmit)="addRestaurant()" class="form mt-3">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">RestaurantName</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroup"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Email</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroup"
+            formControlName="email"
+          />
+        </div>
+
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Mobile</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroup"
+            formControlName="mobile"
+          />
+        </div>
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Address</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroup"
+            formControlName="address"
+          />
+        </div>
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Type</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroup"
+            formControlName="types"
+          />
+        </div>
+        <button
+          type="submit"
+          color="primary"
+          mat-raised-button
+          class=" mt-3 btn-block rounded-pill"
+          [disabled]="!restaurantForm.valid"
+        >
+          Add Listing
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

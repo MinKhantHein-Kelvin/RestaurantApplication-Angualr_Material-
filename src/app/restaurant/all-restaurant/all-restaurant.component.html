@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <mat-spinner *ngIf="showSpinner" class="mx-auto"></mat-spinner>
-    <div class="col-md-4" *ngFor="let resData of allRestaurentData">
+    <div class="col-md-4 mb-4" *ngFor="let resData of allRestaurentData">
 
-      <mat-card class="res-card mb-5 text-center">
+      <mat-card class="res-card text-center p-4">
         <mat-card-header class="mb-3">
           <div mat-card-avatar class="res-header-image"></div>
           <mat-card-title class="mt-2">{{resData.name}}</mat-card-title>
@@ -12,9 +12,25 @@
           <h4>Location : {{resData.address}} | Type : {{resData.types}}</h4>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button [routerLink]="resData._id" class="mb-2 btn btn-block rounded-pill" style="background: chocolate;">Details</button>
+          <button mat-button [routerLink]="resData._id" class="mb-2 btn btn-secondary btn-block rounded-pill" style="color: wheat; background: dimgray;">Details</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
+  <!-- <div class="row">
+    <div class="col-md-4" *ngFor="let resData of allRestaurentData">
+      <mat-card class="example-card mb-5 text-center">
+        <mat-card-content >
+          <h1> {{listing.title}}</h1>
+          <img src="{{listing.profile_url}}" alt="">
+          {{resData.name}}
+          <h4>Price : {{resData.email}} | Locality : {{resData.mobile}}</h4>
+        </mat-card-content>
+        <mat-card-actions>
+          <button [routerLink]="resData._id" class="mb-2 btn btn-block rounded-pill" style="background: chocolate;">View Details</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+  </div> -->
 </div>

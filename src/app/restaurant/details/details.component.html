@@ -28,8 +28,91 @@
         </div>
       </div>
       <mat-card-actions  class="text-center p-3">
-        <button mat-raised-button color="accent"> Edit </button>
-        <button mat-raised-button color="warn">Delete</button>
+        <button mat-raised-button color="accent" class="mr-3" (click)="showEdit()" *ngIf="userService.LoggedIn()"> Edit </button>
+        <button mat-raised-button color="warn" (click)="deleteRestaurant()" *ngIf="userService.LoggedIn()">Delete</button>
       </mat-card-actions>
-    </mat-card>
+</mat-card>
+
+
+<mat-card class="example-card" style="margin: 40px auto;" *ngIf="showform">
+  <mat-card-header>
+    <mat-card-title>Edit Listing</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="editForm" (ngSubmit)="editRestaurant()" class="form mt-3">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Restaurant Name</div>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          formControlName="name"
+          [(ngModel)]="restaurant.name"
+        />
+      </div>
+
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Email</div>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          formControlName="email"
+          [(ngModel)]="restaurant.email"
+        />
+      </div>
+
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Mobile</div>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          formControlName="mobile"
+          [(ngModel)]="restaurant.mobile"
+        />
+      </div>
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Address</div>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          formControlName="address"
+          [(ngModel)]="restaurant.address"
+        />
+      </div>
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Type</div>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          formControlName="types"
+          [(ngModel)]="restaurant.types"
+        />
+      </div>
+      <button
+        type="submit"
+        mat-raised-button
+        class="btn btn-success mt-3 btn-block rounded-pill"
+        [disabled]="!editForm.valid"
+      >
+        Edit Listing
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
 

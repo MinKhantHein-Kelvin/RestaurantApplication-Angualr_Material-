@@ -6,6 +6,7 @@ import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { AllRestaurantComponent } from './all-restaurant/all-restaurant.component';
 import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
 import { DetailsComponent } from './details/details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { DetailsComponent } from './details/details.component';
     CommonModule,
     RestaurantRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ]
 })
 export class RestaurantModule { }
