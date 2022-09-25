@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const Restaurant = require("../modal/Restaurant");
-const verify = require("../router/verify");
+// const verify = require("../router/verify");
 
 // create
-router.post("/", verify, async (req, res) => {
+router.post("/", async (req, res) => {
   const createRestaurant = new Restaurant({
     name: req.body.name,
     email: req.body.email,
@@ -42,7 +42,7 @@ router.get("/:restaurantId", async (req, res) => {
 });
 
 // update data
-router.put("/:updateId",verify, async (req, res) => {
+router.put("/:updateId", async (req, res) => {
   try {
     const data = {
       name: req.body.name,
@@ -62,7 +62,7 @@ router.put("/:updateId",verify, async (req, res) => {
 });
 
 // delete data
-router.delete("/:deleteId",verify, async (req, res) => {
+router.delete("/:deleteId", async (req, res) => {
   try {
     const deletedata = await Restaurant.findByIdAndRemove(req.params.deleteId);
     res.send(deletedata);
