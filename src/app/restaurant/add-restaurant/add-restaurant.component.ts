@@ -24,10 +24,15 @@ export class AddRestaurantComponent implements OnInit {
   addRestaurant(){
     if(this.restaurantForm.valid){
       this.resService.addRestaurant(this.restaurantForm.value).subscribe(data=>{
+        if(data.length === 0){
+          console.log("Null Value");
+        }
+        else{
         console.log(data);
         this.restaurantForm.reset();
         this.router.navigate(['/restaurant']);
         this.openSnackBar();
+        }
       })
     }
   }

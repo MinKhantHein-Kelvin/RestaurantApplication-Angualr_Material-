@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _snackBar: MatSnackBar,
-    public userService : UserService
+    public userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -53,9 +53,13 @@ export class DetailsComponent implements OnInit {
       this.resService
         .editRestaurant(this.editForm.value, this.id)
         .subscribe((data: any) => {
-          this.editForm.reset();
-          this.router.navigate(['restaurant']);
-          this.openUpdateSnackBar();
+          if (data.length === 0) {
+            console.log('Null Value');
+          } else {
+            this.editForm.reset();
+            this.router.navigate(['restaurant']);
+            this.openUpdateSnackBar();
+          }
         });
     }
   }
@@ -63,8 +67,12 @@ export class DetailsComponent implements OnInit {
   deleteRestaurant() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.resService.deleteRestaurant(this.id).subscribe((data) => {
-      this.router.navigate(['restaurant']);
-      this.openDeleteSnackBar();
+      if (data.length === 0) {
+        console.log('Null Value');
+      } else {
+        this.router.navigate(['restaurant']);
+        this.openDeleteSnackBar();
+      }
     });
   }
 
