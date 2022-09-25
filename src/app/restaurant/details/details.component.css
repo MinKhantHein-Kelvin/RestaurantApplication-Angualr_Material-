@@ -18,10 +18,3 @@ img{
 .example-card {
   max-width: 800px;
 }
-@media (max-width: 768px){
-  .res-card img{
-    display: block;
-    height: 220px;
-  }
-}
-
