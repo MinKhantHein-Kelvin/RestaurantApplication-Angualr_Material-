@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = "http://localhost:8080"
+  // private baseUrl = "http://localhost:8080"
+  private baseUrl = 'https://angularrestaruntapp.herokuapp.com'
 
   constructor(private http : HttpClient, private router : Router) { }
 
