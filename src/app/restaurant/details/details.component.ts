@@ -45,6 +45,7 @@ export class DetailsComponent implements OnInit {
 
   showEdit() {
     this.showform = !this.showform;
+    window.scrollTo(0,document.body.scrollHeight);
   }
 
   editRestaurant() {
@@ -63,6 +64,7 @@ export class DetailsComponent implements OnInit {
         });
     }
   }
+
 
   deleteRestaurant() {
     this.id = this.route.snapshot.paramMap.get('id');
